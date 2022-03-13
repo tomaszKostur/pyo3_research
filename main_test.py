@@ -1,4 +1,5 @@
 import inspect
+import copy
 
 import module_written_in_rust
 out = module_written_in_rust.sum_as_string(5, 20)
@@ -21,5 +22,14 @@ print(module_written_in_rust.return_module_name())
 module_written_in_rust.kwargs_example(a='aa', b='bb')
 
 # Rust Class
-rc = module_written_in_rust.RustImplemented(4)
+rc = module_written_in_rust.RustImplemented(4, "huehuehue")
 print(rc.add_predefined(4))
+print(rc.get_predefined_string())
+rs = rc.get_predefined_string()
+rfs = copy.copy(rs)
+print(type(rfs))
+rfs += 'qwerty'
+rfs[1]='q'
+print(rfs)
+rs += 'xxdd'
+print(rs)

@@ -30,18 +30,22 @@ fn kwargs_example(kwargs: Option<&PyDict>) -> PyResult<String> {
 #[pyclass]
 struct RustImplemented {
     some_int: isize,
-
+    some_string: String
 }
 
 #[pymethods]
 impl RustImplemented {
     #[new]
-    fn new(v: isize) -> Self { // Why 'Self' starting from capital letter? becouse of 'Self' in python?
-        RustImplemented{some_int: v}
+    fn new(v: isize, s: &str) -> Self { // Why 'Self' starting from capital letter? becouse of 'Self' in python?
+        RustImplemented{some_int: v, some_string: String::from(s)}
     }
 
     fn add_predefined(&self, input: isize) -> isize {
         self.some_int + input
+    }
+
+    fn get_predefined_string(&self) -> PyResult<&String>{
+        Ok(&self.some_string)
     }
 }
 

@@ -6,3 +6,4 @@
 6. .so seems to work as release and debug builds
 7. pyfunction signatures are not generated automatically. use “test_signature”
 8. python classes implemented in rust
+9. Allocation of data, Rust side or python side ?
